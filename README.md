@@ -5,7 +5,7 @@ In this project, the objective is to visualize and make calculations from medica
 ## Table of Content
 * [Introduction](#intro)
 
-##Intorduction <a name="intro"></a>
+## Intorduction <a name="intro"></a>
 
 File name: medical_examination.csv.
 
