@@ -9,7 +9,7 @@ In this project, the objective is to visualize and make calculations from medica
 
 File name: [medical_examination.csv](medical_examination.csv).
 
-The rows in the dataset represent patients and the columns represent information like body measurements, results from various blood tests, and lifestyle choices. You will use the dataset to explore the relationship between cardiac disease, body measurements, blood markers, and lifestyle choices.
+The rows in the dataset represent patients and the columns represent information such as body measurements, results from various blood tests, and lifestyle choices. The objective is to use the dataset to explore the relationship between cardiac disease, body measurements, blood markers, and lifestyle choices.
 
 | Feature | Variable Type | Variable | Value Type |
 |---|---|---|---|
@@ -43,6 +43,6 @@ Use the data to complete the following tasks in [medical_data_visualizer.py](med
   * weight is more than the 97.5th percentile
 * Create a correlation matrix using the dataset. Plot the correlation matrix using seaborn's <kbd>heatmap()</kbd>. Mask the upper triangle. The chart should look like [examples/Figure_2.png](https://github.com/abarriebee/Medical-Data-Visualizer/blob/091ebc90d12d61f7a648208ea501b0b7e5f645f0/examples/Figure_2%20(1).png).
 
-Any time a variable is set to <kbd>None</kbd>, make sure to set it to the correct code.
+Any time a variable is set to <kbd>None</kbd>, we must make sure to set it to the correct code.
 
 Unit tests are written for you under [test_module.py](test_module.py).
