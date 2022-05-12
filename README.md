@@ -1,6 +1,6 @@
 # Medical-Data-Visualizer
 
-In this project, the objective is to visualize and make calculations from medical examination data using <kbd>matplotlib</kbd>, <kbd>seaborn</kbd>, and <kbd>pandas</kbd>. The dataset values were collected during medical examinations.
+In this project, the objective is to visualize and make calculations from medical examination data using <kbd>matplotlib</kbd>, <kbd>seaborn</kbd>, and <kbd>pandas</kbd>. The dataset values provided for this project were collected during medical examinations.
 
 ## Table of Content
 * [Introduction](#intro)
