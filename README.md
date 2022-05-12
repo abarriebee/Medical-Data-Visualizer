@@ -36,8 +36,8 @@ Use the data to complete the following tasks in [medical_data_visualizer.py](med
 * Normalize the data by making 0 always good and 1 always bad. If the value of <kbd>cholesterol</kbd> or <kbd>gluc</kbd> is 1, make the value 0. If the value is more than 1, make the value 1.
 * Convert the data into long format and create a chart that shows the value counts of the categorical features using seaborn's <kbd>catplot()</kbd>. The dataset should be split by 'Cardio' so there is one chart for each <kbd>cardio</kbd> value. The chart should look like [examples/Figure_1.png](https://github.com/abarriebee/Medical-Data-Visualizer/blob/091ebc90d12d61f7a648208ea501b0b7e5f645f0/examples/Figure_1%20(1).png).
 * Clean the data. Filter out the following patient segments that represent incorrect data:
-  * diastolic pressure is higher than systolic (Keep the correct data with <kbd>(df['ap_lo'] <= df['ap_hi']))</kbd>
-  * height is less than the 2.5th percentile (Keep the correct data with <kbd>(df['height'] >= df['height'].quantile(0.025)))</kbd>
+  * diastolic pressure is higher than systolic (Keep the correct data with <kbd>(df['ap_lo'] <= df['ap_hi'])</kbd>)
+  * height is less than the 2.5th percentile (Keep the correct data with <kbd>(df['height'] >= df['height'].quantile(0.025))</kbd>)
   * height is more than the 97.5th percentile
   * weight is less than the 2.5th percentile
   * weight is more than the 97.5th percentile
