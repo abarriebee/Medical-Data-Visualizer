@@ -7,9 +7,9 @@ In this project, the objective is to visualize and make calculations from medica
 
 ## Intorduction <a name="intro"></a>
 
-File name: [medical_examination.csv](medical_examination.csv).
-
 The rows in the dataset represent patients and the columns represent information such as body measurements, results from various blood tests, and lifestyle choices. The objective is to use the dataset to explore the relationship between cardiac disease, body measurements, blood markers, and lifestyle choices.
+
+File name: [medical_examination.csv](medical_examination.csv).
 
 | Feature | Variable Type | Variable | Value Type |
 |---|---|---|---|
