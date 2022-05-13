@@ -4,6 +4,8 @@ In this project, the objective is to visualize and make calculations from medica
 
 ## Table of Content
 * [Introduction](#intro)
+* [Tasks](#task)
+* [Solution Breakdown](#sol)
 
 ## Intorduction <a name="intro"></a>
 
@@ -26,7 +28,7 @@ File name: [medical_examination.csv](medical_examination.csv).
 | Physical activity | Subjective Feature | active | binary |
 | Presence or absence of cardiovascular disease | Target Variable | cardio | binary |
 
-## Tasks
+## Tasks <a name="task"></a>
 
 Create a chart similar to [examples/Figure_1.png](https://github.com/abarriebee/Medical-Data-Visualizer/blob/091ebc90d12d61f7a648208ea501b0b7e5f645f0/examples/Figure_1%20(1).png), where we show the counts of good and bad outcomes for the <kbd>cholesterol</kbd>, <kbd>gluc</kbd>, <kbd>alco</kbd>, <kbd>active</kbd>, and <kbd>smoke</kbd> variables for patients with cardio=1 and cardio=0 in different panels.
 
@@ -46,3 +48,46 @@ Use the data to complete the following tasks in [medical_data_visualizer.py](med
 Any time a variable is set to <kbd>None</kbd>, we must make sure to set it to the correct code.
 
 Unit tests are written for you under [test_module.py](test_module.py).
+ 
+ ## Solution Breakdown <a name="sol"></a>
+ 
+ Importing the CSV file given to us:
+ 
+ ```
+ df = pd.read_csv("medical_examination.csv")
+ ```
+ 
+ Adding and overweight column:
+ ```
+ df['overweight'] = (df["weight"] / (df["height"] / 100) ** 2).apply(lambda x : 1 if x > 25 else 0)
+ ```
+ 
+Normalizing data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
+ ```
+df["cholesterol"] = df["cholesterol"].apply(lambda x : 0 if x == 1 else 1)
+df["gluc"] = df["gluc"].apply(lambda x : 0 if x == 1 else 1)
+ ```
+Drawing categorical plot and creating a DataFrame for the cat plot using `pd.melt` while solely using the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight':
+```
+def draw_cat_plot():
+ df_cat = pd.melt(df, id_vars = ["cardio"], value_vars = ['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
+
+```
+Group and reformating the data to split it by 'cardio'. Show the counts of each feature. Then, renaming one of the columns for the catplot to work correctly:
+ ```
+    df_cat["total"] = 1
+    df_cat = df_cat.groupby(["cardio", "variable", "value"], as_index = False).count()
+ ```
+ 
+ Draw the seaborn catplot with 'sns.catplot():
+ ```
+     sns.set_theme(style = "darkgrid")
+
+    fig = sns.catplot(x = "variable", y = "total", data = df_cat, hue = "value", kind = "bar", col = "cardio").fig
+ ```
+ 
+ Saving and returning a catplot:
+ ```
+     fig.savefig('catplot.png')
+    return fig
+ ```
