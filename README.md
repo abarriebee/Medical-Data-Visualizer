@@ -79,15 +79,15 @@ Group and reformating the data to split it by 'cardio'. Show the counts of each 
     df_cat = df_cat.groupby(["cardio", "variable", "value"], as_index = False).count()
  ```
  
- Draw the seaborn catplot with 'sns.catplot():
+ Draw the seaborn catplot with 'sns.catplot()':
  ```
-     sns.set_theme(style = "darkgrid")
+    sns.set_theme(style = "darkgrid")
 
     fig = sns.catplot(x = "variable", y = "total", data = df_cat, hue = "value", kind = "bar", col = "cardio").fig
  ```
  
  Saving and returning a catplot:
  ```
-     fig.savefig('catplot.png')
+    fig.savefig('catplot.png')
     return fig
  ```
