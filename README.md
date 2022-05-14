@@ -114,16 +114,16 @@ def draw_cat_plot():
 ```
 corr = df_heat.corr(method="pearson")                        
 ```
-Generating the mask for the upper triangle:
+6.1. Generating the mask for the upper triangle:
 ```
 mask = np.triu(corr)
 ```
   
-Setting up the matplotlib fogure:
+Setting up the matplotlib figure:
 ```  
 fig, ax = plt.subplots(figsize = (12,12))                        
 ```
-Seaborn heat map:
+6.2. Seaborn heat map:
 ```
 sns.heatmap(corr, linewidths=1, annot = True, square = True, mask = mask, fmt = ".1f", center = 0.08, cbar_kws = {"shrink": 0.5})
                         
