@@ -57,17 +57,18 @@ Unit tests are written for you under [test_module.py](test_module.py).
  df = pd.read_csv("medical_examination.csv")
  ```
  
- Adding and overweight column:
+ 1. In the following code listed below, we are adding an overweight column as instructed, to determine if a person is overwight by calculating their BMI. When considering the BMI, we must consider how the height given is in cm. Therefore, we must divide the height by 100 to convert into meters. An addition, we apply a lambda function to dictate if the person's BMI value, X,  exceeds <kbd> > 25 </kbd>. If the X value is <kbd> > 25 </kbd> then function will return a 1 to rule that the person is overweight, otherwise, a 0 is returned.
+ 
  ```
  df['overweight'] = (df["weight"] / (df["height"] / 100) ** 2).apply(lambda x : 1 if x > 25 else 0)
  ```
  
-Normalizing data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
+2. Normalizing data by making the return value, 0 ,good and 1 bad. Therefore, if the value of 'cholesterol' or 'gluc' is good, at a level 1 out of 3, that value would be considered as a 0. However, if the value exceeds level 1, above the average and well above average, then that value will be considered bad and have value of 1.
  ```
 df["cholesterol"] = df["cholesterol"].apply(lambda x : 0 if x == 1 else 1)
 df["gluc"] = df["gluc"].apply(lambda x : 0 if x == 1 else 1)
  ```
-Drawing categorical plot and creating a DataFrame for the cat plot using `pd.melt` while solely using the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight':
+3. Drawing categorical plot and creating a DataFrame for the cat plot using `pd.melt` while solely using the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight':
 ```
 def draw_cat_plot():
  df_cat = pd.melt(df, id_vars = ["cardio"], value_vars = ['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
