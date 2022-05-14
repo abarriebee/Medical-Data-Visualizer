@@ -77,13 +77,13 @@ def draw_cat_plot():
  df_cat = pd.melt(df, id_vars = ["cardio"], value_vars = ['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
 
 ```
-Group and reformating the data to split it by 'cardio'. Show the counts of each feature. Then, renaming one of the columns for the catplot to work correctly:
+4. Here, we must group and reformat the data in order to split the 'cardio' dataset to show the counts of each feature. Then, in 4.1, we must rename one of the columns for the <kbd>catplot()>/kbd> to function properly:
  ```
     df_cat["total"] = 1
     df_cat = df_cat.groupby(["cardio", "variable", "value"], as_index = False).count()
  ```
  
- Draw the seaborn catplot with 'sns.catplot()':
+ 4.1. Draw the seaborn catplot with 'sns.catplot()':
  ```
     sns.set_theme(style = "darkgrid")
 
@@ -96,3 +96,41 @@ Group and reformating the data to split it by 'cardio'. Show the counts of each 
     return fig
  ```
  ### Heat Plot <a name="heat"></a>
+ 
+ We begin by defining the heat map:
+ ```
+ def draw_heat_map():
+ ```
+ 5. Now, we must clean the data to gather the desired range of height and weight.
+ ```
+    df_heat = df[
+      (df['ap_lo'] <= df['ap_hi']) &
+      (df['height'] >= df ['height'].quantile(0.025)) &
+      (df['height'] <= df ['height'].quantile(0.975)) &
+      (df['weight'] >= df ['weight'].quantile(0.025)) &
+      (df['weight'] <= df ['weight'].quantile(0.975))]
+```
+6. Next, we calculate the correlation matrix:
+```
+corr = df_heat.corr(method="pearson")                        
+```
+Generating the mask for the upper triangle:
+```
+mask = np.triu(corr)
+```
+  
+Setting up the matplotlib fogure:
+```  
+fig, ax = plt.subplots(figsize = (12,12))                        
+```
+Seaborn heat map:
+```
+sns.heatmap(corr, linewidths=1, annot = True, square = True, mask = mask, fmt = ".1f", center = 0.08, cbar_kws = {"shrink": 0.5})
+                        
+```     
+                        
+Saving and returning heatmap:
+```
+fig.savefig('heatmap.png')
+return fig                        
+```                        
