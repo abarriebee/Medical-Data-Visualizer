@@ -53,7 +53,7 @@ Unit tests are written for you under [test_module.py](test_module.py).
  
  ## Solution Breakdown <a name="sol"></a>
  
- We can begin our code by importing the data from the CSV file given to us:
+ We can begin our code by importing the data from the [CSV file](medical_examination.csv) given to us:
  
  ```
  df = pd.read_csv("medical_examination.csv")
@@ -74,6 +74,7 @@ df["gluc"] = df["gluc"].apply(lambda x : 0 if x == 1 else 1)
 3. Drawing categorical plot and creating a DataFrame for the cat plot using `pd.melt` while solely using the values from 'cholesterol', 'gluc', 'smoke', 'alco', 'active', and 'overweight':
 ```
 def draw_cat_plot():
+ 
  df_cat = pd.melt(df, id_vars = ["cardio"], value_vars = ['cholesterol', 'gluc', 'smoke', 'alco', 'active', 'overweight'])
 
 ```
@@ -95,6 +96,17 @@ def draw_cat_plot():
     fig.savefig('catplot.png')
     return fig
  ```
+ 
+<details>
+   <summary>
+    Return figure of categorized plot:
+    
+  </summary>
+  
+  ![image](https://github.com/abarriebee/Medical-Data-Visualizer/blob/881775a322c6bd5ae7fabd6c531e15df7a673932/Solutions/catplot.png)
+  
+ </details>
+ 
  ### Heat Plot <a name="heat"></a>
  
  We begin by defining the heat map:
@@ -134,3 +146,11 @@ Saving and returning heatmap:
 fig.savefig('heatmap.png')
 return fig                        
 ```                        
+<details>
+  <summary>
+    Return figure of heat map:
+  </summary>
+ 
+ ![image](https://github.com/abarriebee/Medical-Data-Visualizer/blob/881775a322c6bd5ae7fabd6c531e15df7a673932/Solutions/heatmap.png)
+ 
+ </details>
