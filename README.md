@@ -6,6 +6,8 @@ In this project, the objective is to visualize and make calculations from medica
 * [Introduction](#intro)
 * [Tasks](#task)
 * [Solution Breakdown](#sol)
+  * [Categorical Plot](#cat)
+  * [Heat PLot](#heat)
 
 ## Intorduction <a name="intro"></a>
 
@@ -51,13 +53,14 @@ Unit tests are written for you under [test_module.py](test_module.py).
  
  ## Solution Breakdown <a name="sol"></a>
  
- Importing the CSV file given to us:
+ We can begin our code by importing the data from the CSV file given to us:
  
  ```
  df = pd.read_csv("medical_examination.csv")
  ```
+ ### Categorical Plot <a name="cat"> </a>
  
- 1. In the following code listed below, we are adding an overweight column as instructed, to determine if a person is overwight by calculating their BMI. When considering the BMI, we must consider how the height given is in cm. Therefore, we must divide the height by 100 to convert into meters. An addition, we apply a lambda function to dictate if the person's BMI value, X,  exceeds <kbd> > 25 </kbd>. If the X value is <kbd> > 25 </kbd> then function will return a 1 to rule that the person is overweight, otherwise, a 0 is returned.
+ 1. In the following code listed below, we are adding an overweight column as instructed, to determine if a person is overwight by calculating their BMI. When considering the BMI, we must consider how the height given is in cm. Therefore, we must divide the height by 100 to convert into meters. An addition, we apply a lambda function to dictate if the person's BMI value, labda x,  exceeds <kbd> > 25 </kbd>. If the lambda x value is <kbd> > 25 </kbd> then function will return a 1 to rule that the person is overweight, otherwise, a 0 is returned.
  
  ```
  df['overweight'] = (df["weight"] / (df["height"] / 100) ** 2).apply(lambda x : 1 if x > 25 else 0)
@@ -92,3 +95,4 @@ Group and reformating the data to split it by 'cardio'. Show the counts of each 
     fig.savefig('catplot.png')
     return fig
  ```
+ ### Heat Plot <a name="heat"></a>
